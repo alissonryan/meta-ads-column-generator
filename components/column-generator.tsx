@@ -20,6 +20,7 @@ export function ColumnGenerator() {
   const [businessId, setBusinessId] = useState('')
   const [selectedSet, setSelectedSet] = useState<string>('')
   const [generatedUrl, setGeneratedUrl] = useState('')
+  const [copySuccess, setCopySuccess] = useState(false)
 
   const baseUrl = "https://adsmanager.facebook.com/adsmanager/manage/campaigns?act={{ID CONTA DE ANÚNCIO}}&business_id={{BUSINESS ID}}&nav_entry_point=ads_ecosystem_navigation_menu&columns={{COLUMNS}}&attribution_windows=default&breakdown_regrouping=true&nav_source=ads_manager"
 
@@ -37,6 +38,16 @@ export function ColumnGenerator() {
       setGeneratedUrl(url)
     } else {
       alert("Por favor, preencha o ID da Conta de Anúncio e o ID do Negócio antes de gerar o URL.")
+    }
+  }
+
+  const handleCopyUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(generatedUrl)
+      setCopySuccess(true)
+      setTimeout(() => setCopySuccess(false), 2000) // Reset após 2 segundos
+    } catch (err) {
+      console.error('Falha ao copiar texto: ', err)
     }
   }
 
@@ -98,10 +109,11 @@ export function ColumnGenerator() {
                   {generatedUrl}
                 </div>
                 <Button
-                  onClick={() => navigator.clipboard.writeText(generatedUrl)}
+                  onClick={handleCopyUrl}
                   className="mt-2"
+                  variant={copySuccess ? "outline" : "default"}
                 >
-                  Copiar URL
+                  {copySuccess ? "URL Copiada!" : "Copiar URL"}
                 </Button>
               </div>
             )}
