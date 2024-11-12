@@ -17,7 +17,7 @@ const columnSets = {
 export function ColumnGenerator() {
   const [adAccountId, setAdAccountId] = useState('')
   const [businessId, setBusinessId] = useState('')
-  const [selectedSet, setSelectedSet] = useState('')
+  const [selectedSet, setSelectedSet] = useState<string>('')
   const [generatedUrl, setGeneratedUrl] = useState('')
 
   const baseUrl = "https://adsmanager.facebook.com/adsmanager/manage/campaigns?act={{ID CONTA DE ANÚNCIO}}&business_id={{BUSINESS ID}}&nav_entry_point=ads_ecosystem_navigation_menu&columns={{COLUMNS}}&attribution_windows=default&breakdown_regrouping=true&nav_source=ads_manager"
