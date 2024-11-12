@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
+import Image from 'next/image'
 
 const columnSets = {
   padrao: "name%2Cdelivery%2Cbudget%2Cspend%2Cresults%2Ccost_per_result%2Creach%2Cimpressions%2Ccpm%2Cfrequency%2Cactions%3Alink_click%2Ccost_per_action_type%3Alink_click%2Cwebsite_ctr%3Alink_click%2Cunique_actions%3Alink_click%2Cunique_link_clicks_ctr",
@@ -41,6 +42,16 @@ export function ColumnGenerator() {
 
   return (
     <div className="container mx-auto p-4 max-w-2xl">
+      <div className="flex justify-center mb-6">
+        <Image
+          src="/growthad-logo.png"
+          alt="Growthad Logo"
+          width={350}
+          height={100}
+          priority
+          className="dark:invert"
+        />
+      </div>
       <Card>
         <CardHeader>
           <CardTitle>Gerador de Colunas para Meta Ads</CardTitle>
